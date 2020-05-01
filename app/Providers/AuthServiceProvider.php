@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +24,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('update-question',function($user,$question){
+            return $user->id == $question->user_id;
+        });
+
+        Gate::define('delete-question',function($user,$question){
+            return $user->id == $question->user_id;
+        });
     }
 }
