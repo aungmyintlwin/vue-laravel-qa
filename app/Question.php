@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use Parsedown;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,7 +31,7 @@ class Question extends Model
 
     public function getUrlAttribute()
     {
-        return route("questions.show",$this->id);
+        return route("questions.show",$this->slug);
     }
 
     public function getCreatedDateAttribute()
