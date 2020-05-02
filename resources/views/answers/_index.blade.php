@@ -17,9 +17,20 @@
                             <a title="This Answer is not useful" class="vote-dwon off">
                                 <i class="fas fa-caret-down fa-3x" aria-hidden="true"></i>
                             </a>
-                            <a title="Mars this answer as best answer" class="{{$answer->status}} mt-2">
-                                <i class="fas fa-check fa-2x" aria-hidden="true"></i>
-                            </a>
+                            @can('accept',$answer)
+                                <a title="Mars this answer as best answer" class="{{$answer->status}} mt-2" onClick="event.preventDefault();document.getElementById('accept-answer-{{$answer->id}}').submit();">
+                                    <i class="fas fa-check fa-2x" aria-hidden="true"></i>
+                                </a>
+                                <form id="accept-answer-{{$answer->id}}" action="{{route('answers.accept',$answer->id)}}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            @else
+                                @if($answer->is_best)
+                                    <a title="The Question owner is accept this  as best answer" class="{{$answer->status}} mt-2">
+                                        <i class="fas fa-check fa-2x" aria-hidden="true"></i>
+                                    </a>
+                                @endif
+                            @endcan
                         </div>
                         <div class="media-body">
                             @parsedown($answer->body)
