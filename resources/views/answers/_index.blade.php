@@ -17,7 +17,7 @@
                             <a title="This Answer is not useful" class="vote-dwon off">
                                 <i class="fas fa-caret-down fa-3x" aria-hidden="true"></i>
                             </a>
-                            <a title="Mars this answer as best answer" class="vote-accepted mt-2">
+                            <a title="Mars this answer as best answer" class="{{$answer->status}} mt-2">
                                 <i class="fas fa-check fa-2x" aria-hidden="true"></i>
                             </a>
                         </div>
