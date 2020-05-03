@@ -10,13 +10,25 @@
                 @foreach($answers as $answer)
                     <div class="media">
                         <div class="d-flex flex-column vote-controls">
-                            <a title="This Answer is Useful" class="vote-up">
+                            <a title="This answer is Useful" class="vote-up {{Auth::guest() ? 'off': ''}}"
+                            onClick="event.preventDefault();document.getElementById('vote-up-answer-{{ $answer->id }}').submit();"
+                            >
                                 <i class="fas fa-caret-up fa-3x" aria-hidden="true"></i>
                             </a>
-                            <span class="votes-count">123</span>
-                            <a title="This Answer is not useful" class="vote-dwon off">
+                            <form id="vote-up-answer-{{ $answer->id }}" action="/answers/{{ $answer->id }}/vote" method="POST" style="display: none;">
+                                @csrf
+                                <input type="hidden" name="vote" value="1">
+                            </form>
+                            <span class="votes-count">{{ $answer->votes_count}}</span>
+                            <a title="This answer is not useful" class="vote-dwon {{Auth::guest() ? 'off':''}}"
+                            onClick="event.preventDefault();document.getElementById('vote-down-answer-{{ $answer->id }}').submit();"
+                            >
                                 <i class="fas fa-caret-down fa-3x" aria-hidden="true"></i>
                             </a>
+                            <form id="vote-down-answer-{{ $answer->id }}" action="/answers/{{ $answer->id }}/vote" method="POST" style="display: none;">
+                                @csrf
+                                <input type="hidden" name="vote" value="-1">
+                            </form>
                             @can('accept',$answer)
                                 <a title="Mars this answer as best answer" class="{{$answer->status}} mt-2" onClick="event.preventDefault();document.getElementById('accept-answer-{{$answer->id}}').submit();">
                                     <i class="fas fa-check fa-2x" aria-hidden="true"></i>
