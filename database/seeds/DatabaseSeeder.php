@@ -1,9 +1,6 @@
 <?php
 
-use VotablesSeederTable;
-use FavoritesTableSeeder;
 use Illuminate\Database\Seeder;
-use UsersQuestionsAnswersTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
