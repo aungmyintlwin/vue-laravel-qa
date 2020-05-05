@@ -20,7 +20,7 @@
                 this.editing = false
             },
             update(){
-                axios.patch(`/questions/${this.questionId}/answers/${this.id}`,{
+                axios.patch(this.endpoint,{
                     body: this.body,
                 }).then(res => {
                     this.editing = false
@@ -29,11 +29,24 @@
                 }).catch(err => {
                     console.log('something')
                 })
+            },
+            destroy(){
+                if(confirm('Are you sure to delete')){
+                    axios.delete(this.endpoint)
+                    .then(res => {
+                        $(this.$el).fadeOut(500, ()=>{
+                            alert(res.data.message);
+                        })
+                    })
+                }
             }
         },
         computed: {
             inInvalid(){
                 return this.body.length < 10;
+            },
+            endpoint(){
+                return `/questions/${this.questionId}/answers/${this.id}`;
             }
         }
     }

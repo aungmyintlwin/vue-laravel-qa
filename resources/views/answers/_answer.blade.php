@@ -23,14 +23,10 @@
                             {{-- @endif --}}
                             {{-- @if(Auth::user()->can('delete-question',$question)) --}}
                             @can('delete',$answer)
-                                <form class="form-delete" action="{{route('questions.answers.destroy',[$question->id,$answer->id])}}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Are you Sure to Delete')">
+                                    <button class="btn btn-outline-danger" @click="destroy">
                                         Delete
                                     </button>
-                                </form>
-                                @endcan
+                            @endcan
                             {{-- @endif --}}
                         </div>
                     </div>
