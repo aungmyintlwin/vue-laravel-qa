@@ -12,6 +12,8 @@ class Answer extends Model
     use VoteableTrait;
     protected  $fillable = ['question_id','user_id','body','votes_count'];
 
+    protected $appends = ['created_date'];
+
     public function question()
     {
         return $this->belongsTo(Question::class);
