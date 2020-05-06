@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a v-if="canAccept" title="Mars this answer as best answer" :class="classess"
+        <a v-if="authorize('accept',answer)" title="Mars this answer as best answer" :class="classess"
         @click.prevent="create"
         >
             <i class="fas fa-check fa-2x" aria-hidden="true"></i>
@@ -34,7 +34,7 @@
         },
         computed: {
             canAccept(){
-                return true
+                return this.authorize('accept', this.answer);
             },
             accepted(){
                 return !this.canAccept && this.isBest;
