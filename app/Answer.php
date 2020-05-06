@@ -12,7 +12,7 @@ class Answer extends Model
     use VoteableTrait;
     protected  $fillable = ['question_id','user_id','body','votes_count'];
 
-    protected $appends = ['created_date'];
+    protected $appends = ['created_date','is_best'];
 
     public function question()
     {
