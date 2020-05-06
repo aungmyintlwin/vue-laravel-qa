@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('questions','QuestionsController')->except('show');
 Route::get('/questions/{slug}','QuestionsController@show')->name('questions.show');
 
-Route::resource('questions.answers','AnswerController')->except(['index','show','create']);
+Route::resource('questions.answers','AnswerController')->except(['show','create']);
 
 Route::post('/answers/{answer}/accept','AcceptAnswerController')->name('answers.accept');
 
