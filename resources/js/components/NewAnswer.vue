@@ -7,7 +7,7 @@
                         <h3>Your Answer</h3>
                     </div>
                     <hr>
-                    <form @click.prevent="create">
+                    <form @submit.prevent="create">
                         <div class="form-group">
                             <textarea id="" class="form-control" rows="7" name="body" v-model="body"></textarea>
                         </div>

@@ -43734,7 +43734,7 @@ var render = function() {
             "form",
             {
               on: {
-                click: function($event) {
+                submit: function($event) {
                   $event.preventDefault()
                   return _vm.create($event)
                 }
