@@ -27,7 +27,7 @@ npm run watch or npm run dev
 php artisan serve
 ```
 
-##### see email address in db and login with password is "password"
+### see email address in db and login with password is "password"
 
 ![TestImage](https://github.com/JasperCool79/vue-laravel-qa/blob/master/public/img/Screenshot%20from%202020-05-07%2020-24-48.png)
 
